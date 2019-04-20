@@ -23,6 +23,7 @@ void AThing::BeginPlay()
 
 void AThing::OnConstruction(const FTransform & Transform)
 {
+	Super::OnConstruction(Transform);
 	UE_LOG(LogTemp, Display, TEXT("AThing::OnConstruction()"));
 	if (GEngine)
 	{
