@@ -1,0 +1,18 @@
+Binaries
+DerivedDataCache
+Intermediate
+Saved
+.vscode
+.vs
+*.VC.db
+*.opensdf
+*.opendb
+*.sdf
+*.sln
+*.suo
+*.xcodeproj
+*.xcworkspace
+*.blend1
+
+# Eventually I may want to stash build artifacts, but for simplicity for now, ignore them
+Build
