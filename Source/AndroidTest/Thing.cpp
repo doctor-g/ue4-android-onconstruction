@@ -30,7 +30,16 @@ void AThing::OnConstruction(const FTransform & Transform)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("AThing::OnConstruction()"));
 	}
+}
 
+void AThing::PreInitializeComponents()
+{
+	Super::PreInitializeComponents();
+	UE_LOG(LogTemp, Display, TEXT("AThing::PreInitializeComponents()"));
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("AThing::PreInitializeComponents()"));
+	}
 	if (Mesh)
 	{
 		UStaticMeshComponent* Component = NewObject<UStaticMeshComponent>(this);
