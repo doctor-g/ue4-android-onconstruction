@@ -8,6 +8,7 @@
 AThing::AThing()
 {
 	PrimaryActorTick.bCanEverTick = false;
+	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("TheRoot"));
 }
 
 // Called when the game starts or when spawned
@@ -28,6 +29,18 @@ void AThing::OnConstruction(const FTransform & Transform)
 	if (GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("AThing::OnConstruction()"));
+	}
+
+	if (Mesh)
+	{
+		UStaticMeshComponent* Component = NewObject<UStaticMeshComponent>(this);
+		Component->SetupAttachment(RootComponent);
+		Component->SetStaticMesh(Mesh);
+		RegisterAllComponents();
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Mesh not specified"));
 	}
 }
 
