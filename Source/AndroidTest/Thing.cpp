@@ -30,6 +30,10 @@ void AThing::OnConstruction(const FTransform & Transform)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("AThing::OnConstruction()"));
 	}
+
+#if WITH_EDITOR
+	InitializeMeshComponent();
+#endif
 }
 
 void AThing::PreInitializeComponents()
@@ -40,6 +44,14 @@ void AThing::PreInitializeComponents()
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("AThing::PreInitializeComponents()"));
 	}
+
+#if !(WITH_EDITOR)
+	InitializeMeshComponent();
+#endif
+}
+
+void AThing::InitializeMeshComponent()
+{
 	if (Mesh)
 	{
 		UStaticMeshComponent* Component = NewObject<UStaticMeshComponent>(this);
